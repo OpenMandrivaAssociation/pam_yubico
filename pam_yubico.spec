@@ -7,6 +7,7 @@ Group:		System/Libraries
 URL:		http://code.google.com/p/yubico-pam/
 Source0:	http://yubico-pam.googlecode.com/files/%{name}-%{version}.tar.gz
 BuildRequires:  pam-devel
+BuildRequires:  libyubikey-client-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
