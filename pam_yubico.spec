@@ -1,12 +1,11 @@
 Summary:	Provides support for One Time Passwords (OTP) authentication
 Name:		pam_yubico
-Version:	2.1
-Release:	%mkrel 3
+Version:	2.4
+Release:	%mkrel 1
 License:	GPLv2
 Group:		System/Libraries
 URL:		http://code.google.com/p/yubico-pam/
 Source0:	http://yubico-pam.googlecode.com/files/%{name}-%{version}.tar.gz
-Patch0:         64bit_pam.patch
 BuildRequires:  openldap-devel
 BuildRequires:  pam-devel
 BuildRequires:  ykclient-devel >= 2.3
@@ -23,7 +22,6 @@ existing user authentication infrastructure.
 %prep
 
 %setup -q -n %{name}-%{version}
-%patch0 -p0
 
 %build
 %serverbuild
