@@ -27,6 +27,7 @@ existing user authentication infrastructure.
 %serverbuild
 
 %configure2_5x \
+    --libdir=/%{_lib} \
     --with-pam-dir=/%{_lib}/security
 
 %make
