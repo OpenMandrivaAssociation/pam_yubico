@@ -13,6 +13,8 @@ BuildRequires:  ykclient-devel >= 2.3
 BuildRequires:  libyubikey-devel
 BuildRequires:  ykpers-devel
 
+Patch0:		pam_yubico-2.10-config.patch
+
 %description
 The Yubico authentication device Yubikey generates one-time passwords that can
 be used for authentication. This module allows you to use the Yubikey device to
@@ -24,6 +26,8 @@ existing user authentication infrastructure.
 %prep
 
 %setup -q -n %{name}-%{version}
+%patch0 -p1
+autoreconf -ifs
 
 %build
 %serverbuild
