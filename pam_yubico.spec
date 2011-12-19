@@ -1,15 +1,17 @@
 Summary:	Provides support for One Time Passwords (OTP) authentication
 Name:		pam_yubico
-Version:	2.4
-Release:	%mkrel 3
+Version:	2.10
+Release:	1
 License:	GPLv2
 Group:		System/Libraries
 URL:		http://code.google.com/p/yubico-pam/
 Source0:	http://yubico-pam.googlecode.com/files/%{name}-%{version}.tar.gz
+Source1:	http://yubico-pam.googlecode.com/files/%{name}-%{version}.tar.gz.sig
 BuildRequires:  openldap-devel
 BuildRequires:  pam-devel
 BuildRequires:  ykclient-devel >= 2.3
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:  libyubikey-devel
+BuildRequires:  ykpers-devel
 
 %description
 The Yubico authentication device Yubikey generates one-time passwords that can
@@ -39,11 +41,10 @@ rm -rf %{buildroot}
 
 # cleanup
 rm -f %{buildroot}/%{_lib}/security/*.*a
-
-%clean
-rm -rf %{buildroot}
+rm -f %{buildroot}%{_includedir}/*.h
 
 %files
-%defattr(-,root,root)
-%doc COPYING ChangeLog NEWS README
+%doc COPYING ChangeLog NEWS README doc
 %attr(0755,root,root) /%{_lib}/security/pam_yubico.so
+%attr(0755,root,root) %{_bindir}/ykpamcfg
+%attr(0644,root,root) %{_mandir}/man1/ykpamcfg.1*
