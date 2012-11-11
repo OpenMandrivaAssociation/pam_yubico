@@ -1,0 +1,36 @@
+--- pam_yubico-2.10/configure.ac.orig	2011-12-19 11:56:07.956126877 -0200
++++ pam_yubico-2.10/configure.ac	2011-12-19 11:56:24.202126729 -0200
+@@ -34,7 +34,7 @@ AC_PROG_CC
+ AC_LIBTOOL_WIN32_DLL
+ AC_DISABLE_STATIC
+ AC_PROG_LIBTOOL
+-
++AM_CONFIG_HEADER(config.h)
+ AC_CHECK_HEADERS([security/pam_appl.h], [],
+   [AC_MSG_ERROR([[PAM header files not found, install libpam-dev.]])])
+ AC_CHECK_HEADERS([security/pam_modules.h security/_pam_macros.h security/pam_modutil.h], [], [],
+--- pam_yubico-2.10/drop_privs.h.orig	2011-12-19 11:56:14.756126766 -0200
++++ pam_yubico-2.10/drop_privs.h	2011-12-19 11:56:24.203126747 -0200
+@@ -1,6 +1,10 @@
+ #ifndef __PAM_YUBICO_DROP_PRIVS_H_INCLUDED__
+ #define __PAM_YUBICO_DROP_PRIVS_H_INCLUDED__
+ 
++#if HAVE_CONFIG_H
++# include "config.h"
++#endif
++
+ #include <pwd.h>
+ 
+ #ifdef HAVE_SECURITY_PAM_APPL_H
+--- pam_yubico-2.10/util.h.orig	2011-12-19 11:56:20.927126868 -0200
++++ pam_yubico-2.10/util.h	2011-12-19 11:56:24.204126763 -0200
+@@ -38,6 +38,9 @@
+ 
+ #include <ykclient.h>
+ 
++#if HAVE_CONFIG_H
++# include "config.h"
++#endif
+ 
+ #if defined(DEBUG_PAM)
+ # if defined(HAVE_SECURITY__PAM_MACROS_H)
