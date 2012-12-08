@@ -1,19 +1,15 @@
 Summary:	Provides support for One Time Passwords (OTP) authentication
 Name:		pam_yubico
-Version:	2.10
-Release:	1
+Version:	2.4
+Release:	%mkrel 3
 License:	GPLv2
 Group:		System/Libraries
 URL:		http://code.google.com/p/yubico-pam/
 Source0:	http://yubico-pam.googlecode.com/files/%{name}-%{version}.tar.gz
-Source1:	http://yubico-pam.googlecode.com/files/%{name}-%{version}.tar.gz.sig
 BuildRequires:  openldap-devel
 BuildRequires:  pam-devel
 BuildRequires:  ykclient-devel >= 2.3
-BuildRequires:  libyubikey-devel
-BuildRequires:  ykpers-devel
-
-Patch0:		pam_yubico-2.10-config.patch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The Yubico authentication device Yubikey generates one-time passwords that can
@@ -26,8 +22,6 @@ existing user authentication infrastructure.
 %prep
 
 %setup -q -n %{name}-%{version}
-%patch0 -p1
-autoreconf -ifs
 
 %build
 %serverbuild
@@ -45,10 +39,40 @@ rm -rf %{buildroot}
 
 # cleanup
 rm -f %{buildroot}/%{_lib}/security/*.*a
-rm -f %{buildroot}%{_includedir}/*.h
+
+%clean
+rm -rf %{buildroot}
 
 %files
-%doc COPYING ChangeLog NEWS README doc
+%defattr(-,root,root)
+%doc COPYING ChangeLog NEWS README
 %attr(0755,root,root) /%{_lib}/security/pam_yubico.so
-%attr(0755,root,root) %{_bindir}/ykpamcfg
-%attr(0644,root,root) %{_mandir}/man1/ykpamcfg.1*
+
+
+%changelog
+* Wed May 04 2011 Oden Eriksson <oeriksson@mandriva.com> 2.4-3mdv2011.0
++ Revision: 666982
+- mass rebuild
+
+* Wed Oct 20 2010 Oden Eriksson <oeriksson@mandriva.com> 2.4-2mdv2011.0
++ Revision: 586955
+- stupid build system
+- fix build
+- 2.4
+- rebuilt for 2010.1
+- rebuild
+
+* Thu Jun 11 2009 Oden Eriksson <oeriksson@mandriva.com> 2.1-1mdv2010.0
++ Revision: 385140
+- 2.1
+- fix deps
+- sync with fedora
+
+* Wed Sep 17 2008 Oden Eriksson <oeriksson@mandriva.com> 1.8-1mdv2009.0
++ Revision: 285433
+- fix deps
+- import pam_yubico
+
+
+* Wed Sep 17 2008 Oden Eriksson <oeriksson@mandriva.com> 1.8-1mdv2009.0
+- initial Mandriva package
