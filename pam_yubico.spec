@@ -1,7 +1,9 @@
+%define _disable_ld_no_undefined 1
+
 Summary:	Provides support for One Time Passwords (OTP) authentication
 Name:		pam_yubico
 Version:	2.4
-Release:	%mkrel 3
+Release:	4
 License:	GPLv2
 Group:		System/Libraries
 URL:		http://code.google.com/p/yubico-pam/
