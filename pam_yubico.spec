@@ -3,7 +3,7 @@
 Summary:	Provides support for One Time Passwords (OTP) authentication
 Name:		pam_yubico
 Version:	2.4
-Release:	6
+Release:	7
 License:	GPLv2
 Group:		System/Libraries
 Url:		http://code.google.com/p/yubico-pam/
