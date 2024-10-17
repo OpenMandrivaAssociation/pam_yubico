@@ -6,7 +6,7 @@ Version:	2.4
 Release:	14
 License:	GPLv2
 Group:		System/Libraries
-Url:		http://code.google.com/p/yubico-pam/
+Url:		https://code.google.com/p/yubico-pam/
 Source0:	http://yubico-pam.googlecode.com/files/%{name}-%{version}.tar.gz
 BuildRequires:	openldap-devel
 BuildRequires:	pam-devel
